@@ -8,10 +8,17 @@
 
 the document require outside libraries, so you can not run it locally.
 
-###install http server
+### install http server
 ```
 npm install http-server -g
 http-server
 ```
 
 Then you can see corresponding html page.
+
+### Comment:
+
+1, in tua.html
+red=>STRONG,
+Orange=>MEDIUM,
+yellow=>WEAK
