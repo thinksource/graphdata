@@ -45,7 +45,7 @@
 </head>
 
 <body>
-    <script src="https://d3js.org/d3.v3.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js"></script>
     <script>
         // transform the data into a useful representation
         // 1 is inner, 2, is outer
@@ -169,6 +169,15 @@
 
             return colors[c];
         }
+        function link_color(name){
+            if(name.toLowerCase()=="strong")
+            return "Red";
+            else if(name.toUpperCase()=="MEDIUM")
+            return "Orange";
+            else if(name.toUpperCase()=="WEAK")
+            return "Yellow";
+            else return "Black";
+        }
 
         var diagonal = d3.svg.diagonal()
             .source(function (d) {
@@ -205,7 +214,7 @@
             .attr('class', 'link')
             .attr('id', function (d) { return d.id })
             .attr("d", diagonal)
-            .attr('stroke', function (d) { return get_color(d.inner.name); })
+            .attr('stroke', function (d) { return link_color(d.weight); })
             .attr('stroke-width', link_width);
 
         // outer nodes
@@ -271,7 +280,6 @@
             }
 
             for (var i = 0; i < d.related_links.length; i++){
-                console.log('#' + d.related_links[i]);
                 d3.select('#' + d.related_links[i]).attr('stroke-width', '5px');
             }
         }
