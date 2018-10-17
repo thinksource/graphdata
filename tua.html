@@ -87,9 +87,9 @@
                 }
                 let l = { id: 'l-' + iid + '-' + oid, inner: in_val, outer: out_val, weight: item.edge_strength }
                 mylinks.push(l);
-                in_val.related_links.push(l);
+                in_val.related_links.push(l.id);
                 in_val.related_nodes.push(oid);
-                out_val.related_links.push(l);
+                out_val.related_links.push(l.id);
                 out_val.related_nodes.push(iid);
             });
             data = {
@@ -270,9 +270,10 @@
                 d3.select('#' + d.related_nodes[i] + '-txt').attr("font-weight", 'bold');
             }
 
-            for (var i = 0; i < d.related_links.length; i++)
+            for (var i = 0; i < d.related_links.length; i++){
                 console.log('#' + d.related_links[i]);
                 d3.select('#' + d.related_links[i]).attr('stroke-width', '5px');
+            }
         }
 
         function mouseout(d) {
